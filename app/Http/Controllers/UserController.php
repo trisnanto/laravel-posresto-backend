@@ -7,7 +7,7 @@ use App\Http\Requests\UpdateUserRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-// use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -23,8 +23,35 @@ class UserController extends Controller
         return view('pages.users.index', compact('users'));
     }
     // create
+    public function create() {
+        return view('pages.users.create');
+    }
     // store
+    public function store(Request $request)
+    {
+        // validate the request...
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required|min:8',
+            'role' => 'required|in:admin,staff,user',
+        ]);
+
+        // store the request...
+        $user = new User;
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->phone = $request->phone;
+        $user->password = Hash::make($request->password);
+        $user->role = $request->role;
+        $user->save();
+
+        return redirect()->route('users.index')->with('success', 'User created successfully');
+    }
     // show
+    public function show($id) {
+        return view('pages.users.show');
+    }
     // edit
     public function edit($id) {
         // get all users with pagination
@@ -32,11 +59,38 @@ class UserController extends Controller
         return view('pages.users.edit', compact('user'));
     }
     // update
-    public function update(UpdateUserRequest $request, User $user)
+    public function update(Request $request, $id)
     {
-        $data = $request->validated();
-        $user->update($data);
-        return redirect()->route('user.index')->with('success', 'User successfully updated');
+        // validate the request...
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required|email|unique:users,email',
+            'role' => 'required|in:admin,staff,user',
+        ]);
+
+        // update the request...
+        $user = User::find($id);
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->phone = $request->phone;
+        $user->role = $request->role;
+        $user->save();
+
+        //if password is not empty
+        if ($request->password) {
+            $user->password = Hash::make($request->password);
+            $user->save();
+        }
+
+        return redirect()->route('users.index')->with('success', 'User updated successfully');
     }
     // destroy
+    public function destroy($id)
+    {
+        // delete the request...
+        $user = User::find($id);
+        $user->delete();
+
+        return redirect()->route('users.index')->with('success', 'User deleted successfully');
+    }
 }
