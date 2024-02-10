@@ -1,7 +1,7 @@
 <div class="main-sidebar sidebar-style-2">
     <aside id="sidebar-wrapper">
         <div class="sidebar-brand">
-            <a href="index.html">RM. Citra Minang</a>
+            <a href="{{ route('home') }}">RM. Citra Minang</a>
         </div>
         <div class="sidebar-brand sidebar-brand-sm">
             <a href="index.html">St</a>
@@ -24,6 +24,26 @@
                     <li class=''>
                         <a class="nav-link"
                             href="{{route('users.index') }}">Users List</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="nav-item dropdown">
+                <a href="#"
+                    class="nav-link has-dropdown"><i class="fas fa-fire"></i><span>Products</span></a>
+                <ul class="dropdown-menu">
+                    <li class=''>
+                        <a class="nav-link"
+                            href="{{route('products.index') }}">Products List</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="nav-item dropdown">
+                <a href="#"
+                    class="nav-link has-dropdown"><i class="fas fa-fire"></i><span>Categories</span></a>
+                <ul class="dropdown-menu">
+                    <li class=''>
+                        <a class="nav-link"
+                            href="{{route('categories.index') }}">Categories List</a>
                     </li>
                 </ul>
             </li>
