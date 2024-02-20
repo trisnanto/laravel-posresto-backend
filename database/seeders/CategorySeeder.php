@@ -16,17 +16,17 @@ class CategorySeeder extends Seeder
         \App\Models\Category::create([
             'name' => 'Makanan',
             'description' => 'Aneka masakan padang',
-            'image' => 'test',
+            'image' => 'img/categories/makanan.jpg',
         ]);
         \App\Models\Category::create([
             'name' => 'Minuman',
             'description' => 'Aneka minuman',
-            'image' => 'test',
+            'image' => 'img/categories/minuman.jpg',
         ]);
         \App\Models\Category::create([
             'name' => 'Snack',
             'description' => 'Aneka makanan ringan',
-            'image' => 'test',
+            'image' => 'img/categories/snack.jpg',
         ]);
     }
 }
