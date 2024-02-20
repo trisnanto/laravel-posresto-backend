@@ -53,19 +53,17 @@
                                 <div class="table-responsive">
                                     <table class="table-striped table">
                                         <tr>
-
                                             <th>Name</th>
-
-                                            <th>Create At</th>
+                                            <th>Description</th>
+                                            <th>Image</th>
                                             <th>Action</th>
                                         </tr>
                                         @foreach ($categories as $category)
                                             <tr>
 
-                                                <td>{{ $category->name }}
-                                                </td>
-
-                                                <td>{{ $category->created_at }}</td>
+                                                <td>{{ $category->name }}</td>
+                                                <td>{{ $category->description }}</td>
+                                                <td><img src="{{ $category->image }}" height="50"></td>
                                                 <td>
                                                     <div class="d-flex justify-content-center">
                                                         <a href='{{ route('categories.edit', $category->id) }}'
