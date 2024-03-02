@@ -29,3 +29,11 @@ Route::apiResource('/api-products', App\Http\Controllers\Api\ProductController::
 
 //categories api
 Route::apiResource('/api-categories', App\Http\Controllers\Api\CategoryController::class)->middleware('auth:sanctum');
+
+//discount api
+Route::apiResource('/api-discounts', App\Http\Controllers\Api\DiscountController::class)->middleware('auth:sanctum');
+
+Route::post('/api-discounts', [App\Http\Controllers\Api\DiscountController::class, 'store'])->middleware('auth:sanctum');
+
+//orders api
+Route::post('/save-order', [App\Http\Controllers\Api\OrderController::class, 'saveOrder'])->middleware('auth:sanctum');
