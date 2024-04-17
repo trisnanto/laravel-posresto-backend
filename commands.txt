@@ -1,0 +1,27 @@
+php artisan serve
+php artisan serve --port 9000
+php artisan migrate
+php artisan migrate:fresh --seed
+php artisan key:generate
+php artisan storage:link
+php artisan route:list
+php artisan optimize
+php artisan make:controller NamaController
+composer create-project laravel/laravel nama-project
+composer install
+
+// install laravel fortify
+composer require laravel/fortify
+php artisan vendor:publish --provider="Laravel\Fortify\FortifyServiceProvider"
+php artisan fortify:install // for laravel 11
+php artisan migrate
+// -----------------------
+
+// install laravel sanctum
+composer require laravel/sanctum
+php artisan vendor:publish --provider="Laravel\Sanctum\SanctumServiceProvider"
+php artisan migrate
+// -----------------------
+
+// bikin model plus migrationnya
+php artisan make:model NamaModel -m

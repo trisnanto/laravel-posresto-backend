@@ -21,7 +21,15 @@ class UserSeeder extends Seeder
             'phone' => '081212341234'
         ]);
 
-        \App\Models\User::factory(4)->create();
+        \App\Models\User::create([
+            'name' => 'Husnul Hakim',
+            'email' => 'husnul@hakim.com',
+            'password' => Hash::make('12341234'),
+            'role' => 'user',
+            'phone' => '081212341234'
+        ]);
+
+        // \App\Models\User::factory(4)->create();
 
     }
 }

@@ -63,7 +63,7 @@
 
                                                 <td>{{ $category->name }}</td>
                                                 <td>{{ $category->description }}</td>
-                                                <td><img src="{{ $category->image }}" height="50"></td>
+                                                <td><img src="{{ $category->image }}" height="100"></td>
                                                 <td>
                                                     <div class="d-flex justify-content-center">
                                                         <a href='{{ route('categories.edit', $category->id) }}'
